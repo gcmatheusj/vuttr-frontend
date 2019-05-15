@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   Container, TitleWrapper, Title, Subtitle, ContentWrapper, HeaderWrapper,
@@ -11,6 +11,21 @@ import Card from '../../components/Card';
 import Button from '../../components/Button';
 
 export default function Main() {
+  const [data] = useState([
+    {
+      id: 0,
+      title: 'Notion',
+      description: 'Notion é um state com hooks',
+      tags: ['Notion', 'Hooks', 'React'],
+    },
+    {
+      id: 1,
+      title: 'Hooks Teste',
+      description: 'Notion é um teste com hooks',
+      tags: ['Notion', 'Hooks', 'React'],
+    },
+  ]);
+
   return (
     <Container>
       <AutoContainer>
@@ -27,10 +42,9 @@ export default function Main() {
             </Button>
           </HeaderWrapper>
 
-          <Card />
-          <Card />
-          <Card />
-          <Card />
+          {data.map(d => (
+            <Card key={d.id} title={d.title} />
+          ))}
         </ContentWrapper>
       </AutoContainer>
     </Container>
